@@ -40,14 +40,25 @@ jobs:
         run: | 
           cd app
           mvn clean package
-        
+
       - name: Prepare artifact
         run: |
-          mkdir -p veracode-artifact
-          cp app/target/verademo.war veracode-artifact/
+          mkdir -p veracode_artifact_directory
+          cp app/target/verademo.war veracode_artifact_directory/
           
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: veracode-artifact
-          path: veracode-artifact/verademo.war
+          path: veracode_artifact_directory/
+
+  pipeline_scan:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: veracode-artifact
+          path: veracode_artifact_directory
+    
