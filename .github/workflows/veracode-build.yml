@@ -37,12 +37,14 @@ jobs:
           distribution: 'temurin'
           
       - name: Build with Maven
-        run: mvn clean package
+        run: | 
+          cd app
+          mvn clean package
         
       - name: Prepare artifact
         run: |
           mkdir -p veracode-artifact
-          cp target/verademo.war veracode-artifact/
+          cp app/target/verademo.war veracode-artifact/
           
       - name: Upload artifact
         uses: actions/upload-artifact@v3
