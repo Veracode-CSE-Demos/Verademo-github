@@ -1,4 +1,6 @@
 veracode_static_scan:
+  use_custom_workflow: veracode-build
+  artifact_file: ./veracode-artifact/verademo.war
   push:
     trigger: true
     # Please only specify either branches_to_run or branches_to_exclude
@@ -33,6 +35,7 @@ veracode_static_scan:
   create_issue: false
   # If the trigger is set to true, a scan is triggered when you create an issue containing the commands value or add a comment containing the commands value to an issue.
   # Syntax to be used - COMMANDS_VALUE [branch: BRANCH_NAME]
+
   issues:
     trigger: false
     commands:
