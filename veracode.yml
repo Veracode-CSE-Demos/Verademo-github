@@ -1,6 +1,6 @@
 veracode_static_scan:
   use_custom_workflow: veracode-build
-  artifact_file: ./veracode-artifact/verademo.war
+  artifact_file: ./veracode_artifact_directory/verademo.war
   push:
     trigger: true
     # Please only specify either branches_to_run or branches_to_exclude
